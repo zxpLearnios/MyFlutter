@@ -1,4 +1,6 @@
-name: a
+# 项目package 名，在引入时
+
+name: fl
 description: A new Flutter project
 
 # The following defines the version and build number for your application.
