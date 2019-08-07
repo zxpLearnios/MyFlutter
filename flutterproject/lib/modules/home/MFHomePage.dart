@@ -1,5 +1,7 @@
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'MFHomeDetailPage.dart';
 
 class MFHomePage extends StatefulWidget {
 
@@ -15,15 +17,17 @@ class _MFHomePageState extends State<MFHomePage> {
 
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
 
+    return GestureDetector(
+      onTap: _pushDetailPage,
+      child: _getContent(),
+    );
+  }
+
+
+  Widget _getContent() {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -65,6 +69,26 @@ class _MFHomePageState extends State<MFHomePage> {
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  void _pushDetailPage() {
+    MFHomeDetailPage page = MFHomeDetailPage();
+    Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
+      return page;
+    }));
+
   }
 
 }
